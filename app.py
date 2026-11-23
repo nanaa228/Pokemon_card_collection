@@ -12,7 +12,7 @@ def show_cards():
     else:
         cards = get_all_cards()
     return jsonify(cards)
-@app.route("/cards", methods=["POST"])
+@app.route("/cards", methods=["POST_DISABLED"])
 def create_card():
     data = request.get_json()
     if not isinstance(data, dict):
@@ -23,7 +23,7 @@ def create_card():
             return jsonify({"error": f"Field '{field}' is required and must be a non-empty string"}), 400
     card_id = add_card(data["name"].strip(), data["card_set"].strip(), data["rarity"].strip(), data["number"].strip(), data["artist"].strip())
     return jsonify({"message": "Card added successfully", "Id": card_id}), 201 
-@app.route("/cards/<int:card_id>", methods=["DELETE"])
+@app.route("/cards/<int:card_id>", methods=["DELETE_DISABLED"])
 def remove_card(card_id):
     deleted = delete_card(card_id)
     if deleted:

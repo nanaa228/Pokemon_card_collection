@@ -52,3 +52,10 @@ DELETE /cards/1 - delete card by id
 
 Database
 Sqlite ('cards.db') сховище карток
+
+#інет запуск сервера
+запуск сервака:
+py -m waitress --listen=127.0.0.1:8000 app:app
+Запуск клаудфлер:
+& "C:\Program Files (x86)\cloudflared\cloudflared.exe" tunnel --url http://127.0.0.1:8000
+потом /cards в кінці

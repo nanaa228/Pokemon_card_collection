@@ -16,6 +16,7 @@ def main():
     elif command == "find":
         if len(sys.argv) < 3:
             print("Enter a card name")
+            print("Example: py cli.py find Gastly")
             return
         name = sys.argv[2]
         cards = load_cards()

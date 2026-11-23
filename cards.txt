@@ -2,7 +2,6 @@ Blastoise ex, Scarlet & Violet: 151, Special Illustration Rare, 165, Mitsuhiro A
 Scolipede, Scarlet & Violet: Black Bolt, Illustration Rare, 086, Oku
 Pincurchin, Mega Evolution: Delta Reign, Illustration Rare, 103, Tetsu Kayama
 Psyduck, Scarlet & Violet: 151, Illustration Rare, 165, Whisker
-Test Pokemon 1, Test Set, Common, 001, Test Artist
 Test Pokemon 2, Test Set, Common, 002, Test Artist
 Test Pokemon 3, Test Set, Common, 003, Test Artist
 Test Pokemon 4, Test Set, Common, 004, Test Artist

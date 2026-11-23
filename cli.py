@@ -1,4 +1,4 @@
-from logic import find_card, count_cards, count_by_rarity, count_by_set, add_card
+from logic import delete_card, find_card, count_cards, count_by_rarity, count_by_set, add_card
 import sys
 from storege import load_cards, save_cards
 def main():
@@ -66,7 +66,20 @@ def main():
         print ("list - Show all cards")
         print ("find - Search for a card")
         print ("report - Show collection statistics")
+        print ("delete - Delete a card by set and number")
         print ("help - Show available commands")
+    elif command == "delete":
+        cards = load_cards()
+        card_set = input("Enter the set of the card to delete: ").strip()
+        card_number = input("Enter the number of the card to delete: ").strip()
+        if not card_set or not card_number:
+            print("Error: Both set and number must be provided.")
+            return
+        if delete_card(cards, card_set, card_number):
+            save_cards(cards)
+            print(f"Card from set '{card_set}' with number '{card_number}' deleted successfully.")
+        else:
+            print("Card not found")
     else:
         print("Unknown command")
         print("Use 'py cli.py help' to see available commands")

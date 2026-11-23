@@ -59,3 +59,15 @@ py -m waitress --listen=127.0.0.1:8000 app:app
 Запуск клаудфлер:
 & "C:\Program Files (x86)\cloudflared\cloudflared.exe" tunnel --url http://127.0.0.1:8000
 потом /cards в кінці
+
+#Доступ до API
+Pokémon API доступний через домен із HTTPS:
+https://cards.nanascollection.pp.ua
+
+Доступні маршрути:
+GET /cards — список карток
+GET /report — звіт за рідкістю карток
+
+Сервер працює через Waitress і Cloudflare Tunnel
+Для роботи API комп'ютер має бути увімкнений а сервер Waitress — запущений.
+Публічні POST і DELETE запити тимчасово вимкнені

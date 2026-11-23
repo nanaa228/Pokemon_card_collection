@@ -8,8 +8,11 @@ def main():
     command = sys.argv[1]
     if command == "list":
         cards = load_cards()
-        for card in cards:
-            print(card.strip())
+        if not cards:
+            print ("Your collection is empty :(")
+        else:
+            for card in cards:
+                print(card.strip())
     elif command == "find":
         if len(sys.argv) < 3:
             print("Enter a card name")
@@ -41,13 +44,16 @@ def main():
         if not name:
             print("Card name cannot be empty.")
             return
-        card_set = input("Set: ")
-        rarity = input("Rarity: ")
+        card_set = input("Set: ").strip()
+        rarity = input("Rarity: ").strip() 
         number = input("Number: ").strip()
         if not number.isdigit():
             print("Error: Card number must contain only digits.")
             return
-        artist = input("Artist: ")
+        artist = input("Artist: ").strip()
+        if not card_set or not rarity or not artist:
+            print("Error: All fields must be filled.")
+            return
         new_card = f"{name}, {card_set}, {rarity}, {number}, {artist}\n"
         add_card(cards, new_card)
         save_cards(cards)

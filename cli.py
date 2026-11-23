@@ -59,6 +59,14 @@ def main():
         add_card(cards, new_card)
         save_cards(cards)
         print("Card added successfully.")
+    elif command == "help":
+        print ("Pokemon Card Collection")
+        print ("Avilable commands:")
+        print ("add - Add a new card")
+        print ("list - Show all cards")
+        print ("find - Search for a card")
+        print ("report - Show collection statistics")
+        print ("help - Show available commands")
     else:
         print("Unknown command")
 if __name__ == "__main__":

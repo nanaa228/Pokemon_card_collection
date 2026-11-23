@@ -69,5 +69,6 @@ def main():
         print ("help - Show available commands")
     else:
         print("Unknown command")
+        print("Use 'py cli.py help' to see available commands")
 if __name__ == "__main__":
     main()

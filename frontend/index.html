@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content ="width=device-width, initial-scale=1.0">
+    <title>My Pokemon Collection</title>
+</head>
+<style>
+    body {font-family: Arial, Helvetica, sans-serif;
+    background-color: #ffe4e9;
+    text-align: center;
+    padding: 30px;}
+    h1 {color: #db7093;}
+    p {color: #333;}
+    button {background-color: #ffc0cb; color: #8b2252}
+#cards {background-color: #ffffff; border:2px solid #ffc0cb; border-radius:15px; padding:20px; margin:20px auto; max-width:600px; text-align: left; white-space: pre-wrap; color: #8b2252;}
+input {display:block; width: 80%; max-width: 350px; padding: 12px; margin: 10px auto; border: 1px solid #ffc0cb; border-radius: 8px; background-color: #ffffff; color: #8b2252; font-size: 16px;}
+</style>
+<body>
+    <h1>My Pokemon Card Collection 🐉</h1>
+    <p>Welcome to my Pokemon collection!</p>
+    <button onclick="loadCards()">Show my cards </button>
+    <div id="cards"></div>
+    <h2> Add a new card
+        <form id="addCardForm">
+            <input type="text" id="cardName" placeholder="Pokemon name" required>
+            <input type="text" id="cardSet" placeholder="Card set">
+            <input type="text" id="cardRarity" placeholder="Rarity" required>
+            <input type="text" id="cardNumber" placeholder="Card number" required>
+            <input type="text" id="cardArtist" placeholder="Artist" required>
+            <button type="submit">Add card </button>
+        </form>
+    </h2>
+<script>
+    async function loadCards() {
+        const response = await fetch ("https://cards.nanascollection.pp.ua/cards");
+        const cards = await response.json();
+        document.getElementById("cards").textContent = JSON.stringify(cards, null, 2);
+    }
+    document.getElementById("addCardForm").addEventListener("submit", async function(event) 
+    {event.preventDefault(); const card= { 
+    name: document.getElementById("cardName").value, 
+    card_set: document.getElementById("cardSet").value, 
+    rarity: document.getElementById("cardRarity").value,
+    number: document.getElementById("cardNumber").value,
+    artist: document.getElementById("cardArtist").value,};
+    console.log(card); });
+</script>
+</body>
+</html>

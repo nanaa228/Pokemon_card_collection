@@ -1,6 +1,8 @@
 from flask import Flask, jsonify, request
+from flask_cors import CORS
 from database import get_all_cards, add_card, find_cards_by_set, delete_card, get_rarity_report
 app = Flask(__name__)
+CORS(app,origin=["https://cards.nanascollection.pp.ua/"])
 @app.route("/")
 def home():
     return "Welcome to Pokemon Card Collection!"

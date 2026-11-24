@@ -4,3 +4,7 @@ venv/
 .env
 *.db
 cards.db
+*.pem
+*.json
+.cloudflared/
+backups/

@@ -28,6 +28,7 @@ input {display:block; width: 80%; max-width: 350px; padding: 12px; margin: 10px 
             <input type="text" id="cardRarity" placeholder="Rarity" required>
             <input type="text" id="cardNumber" placeholder="Card number" required>
             <input type="text" id="cardArtist" placeholder="Artist" required>
+            <input type="password" id="adminToken" placeholder="Admin token" required>
             <button type="submit">Add card </button>
         </form>
     </h2>
@@ -38,13 +39,30 @@ input {display:block; width: 80%; max-width: 350px; padding: 12px; margin: 10px 
         document.getElementById("cards").textContent = JSON.stringify(cards, null, 2);
     }
     document.getElementById("addCardForm").addEventListener("submit", async function(event) 
-    {event.preventDefault(); const card= { 
+    {event.preventDefault(); 
+        const adminToken = document.getElementById("adminToken").value;
+        const card= { 
     name: document.getElementById("cardName").value, 
     card_set: document.getElementById("cardSet").value, 
     rarity: document.getElementById("cardRarity").value,
     number: document.getElementById("cardNumber").value,
     artist: document.getElementById("cardArtist").value,};
-    console.log(card); });
+    const response = await fetch("https://cards.nanascollection.pp.ua/cards", {
+    method: "POST",
+    headers: {
+        "Content-Type": "application/json",
+        "X-Admin-Token": adminToken
+    },
+    body: JSON.stringify(card)
+});
+    if (response.ok) {
+    alert("Card added successfully!");
+    document.getElementById("addCardForm").reset();
+    await loadCards();
+    } else {
+    alert("Failed to add card!");
+}
+});
 </script>
 </body>
 </html>

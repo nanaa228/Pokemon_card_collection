@@ -96,3 +96,10 @@ to disable caching for API requests.
 
 Cache status was verified using curl.
 Result: cf-cache-status: DYNAMIC.
+
+POST requests require a valid admin token.
+Unauthorized POST requests return 403.
+DELETE requests return 405.
+Admin token is stored in .env.
+Public users can view the collection.
+Authorized users can add new cards.

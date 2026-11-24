@@ -89,3 +89,10 @@ POST and DELETE operations are disabled.
 
 The website was successfully tested in incognito
 mode and using mobile internet.
+
+#Cloudflare caching
+A Cache Rule named "Bypass API cache" is configured
+to disable caching for API requests.
+
+Cache status was verified using curl.
+Result: cf-cache-status: DYNAMIC.

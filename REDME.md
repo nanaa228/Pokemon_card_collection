@@ -15,7 +15,7 @@ py cli.py report
 Запуск тестів:
 py test.py
 
-## Data Format
+#Data Format
 The collection is stored in a text file called cards.txt.
 Each line represents one Pokémon card and contains five fields:
 
@@ -71,3 +71,21 @@ GET /report — звіт за рідкістю карток
 Сервер працює через Waitress і Cloudflare Tunnel
 Для роботи API комп'ютер має бути увімкнений а сервер Waitress — запущений.
 Публічні POST і DELETE запити тимчасово вимкнені
+
+#Frontend Deployment лаба 9
+Hosting: Netlify
+Website: https://nanascollection.pp.ua
+Backend API: https://cards.nanascollection.pp.ua
+DNS: Cloudflare
+SSL certificate: Let's Encrypt
+HTTPS: Enabled
+Public access: Enabled
+
+The frontend retrieves Pokemon cards from the
+backend API and displays them on the website.
+
+Public access is read-only.
+POST and DELETE operations are disabled.
+
+The website was successfully tested in incognito
+mode and using mobile internet.

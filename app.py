@@ -16,6 +16,7 @@ def show_cards():
     return jsonify(cards)
 @app.route("/cards", methods=["POST_DISABLED"])
 def create_card():
+    return jsonify ({"Error": "Access denied"}), 403
     data = request.get_json()
     if not isinstance(data, dict):
         return jsonify({"error": "Invalid data format"}), 400
@@ -27,6 +28,7 @@ def create_card():
     return jsonify({"message": "Card added successfully", "Id": card_id}), 201 
 @app.route("/cards/<int:card_id>", methods=["DELETE_DISABLED"])
 def remove_card(card_id):
+    return jsonify ({"Error": "Access denied"}), 403
     deleted = delete_card(card_id)
     if deleted:
         return jsonify({"message": "Card deleted successfully"}), 200

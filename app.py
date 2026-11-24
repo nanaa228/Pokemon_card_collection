@@ -1,6 +1,11 @@
 from flask import Flask, jsonify, request
+import os
+import secrets
+from dotenv import load_dotenv
 from flask_cors import CORS
 from database import get_all_cards, add_card, find_cards_by_set, delete_card, get_rarity_report
+load_dotenv()
+ADMIN_TOKEN=os.getenv("ADMIN_TOKEN")
 app = Flask(__name__)
 CORS(app,
      origins=["https://nanascollection.pp.ua"])
@@ -15,9 +20,11 @@ def show_cards():
     else:
         cards = get_all_cards()
     return jsonify(cards)
-@app.route("/cards", methods=["POST_DISABLED"])
+@app.route("/cards", methods=["POST"])
 def create_card():
-    return jsonify ({"Error": "Access denied"}), 403
+    token = request.headers.get("X-Admin-Token", "")
+    if not ADMIN_TOKEN or not secrets.compare_digest(token, ADMIN_TOKEN):
+        return jsonify({"Error": "Access denied"}), 403
     data = request.get_json()
     if not isinstance(data, dict):
         return jsonify({"error": "Invalid data format"}), 400
